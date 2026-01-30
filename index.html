@@ -405,6 +405,65 @@
         .stars {
             color: var(--usa-gold);
         }
+
+        /* Lightbox styles */
+        .screenshot {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            z-index: 2001;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        .lightbox-hint {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -417,6 +476,7 @@
         <div class="nav-links">
             <a href="#problem">Problem</a>
             <a href="#solution">Solution</a>
+            <a href="#strategies">Strategies</a>
             <a href="#demo">Product</a>
             <a href="#market">Market</a>
             <a href="#economics">Economics</a>
@@ -513,32 +573,111 @@
             <div class="card">
                 <div class="feature-icon">🤖</div>
                 <h3>AI Tax Chat</h3>
-                <p>Get instant, accurate tax advice 24/7. Ask anything about deductions, credits, or strategies.</p>
+                <p>Ask questions in plain English like "What can I deduct as a freelancer?" or "How do I reduce self-employment tax?" — get instant, accurate answers with IRS references.</p>
             </div>
             <div class="card">
                 <div class="feature-icon">📄</div>
-                <h3>Secure Documents</h3>
-                <p>Bank-level AES-256 encryption. Upload W2s, 1099s, and receipts safely.</p>
+                <h3>Secure Document Vault</h3>
+                <p>Upload W-2s, 1099s, receipts, and tax forms. Everything is encrypted with AES-256-GCM — your data never leaves your device.</p>
             </div>
             <div class="card">
                 <div class="feature-icon">📸</div>
                 <h3>Receipt Scanner</h3>
-                <p>Snap a photo of receipts. We automatically categorize and track your expenses.</p>
+                <p>Snap a photo of any receipt. OCR extracts the data, categorizes the expense, and tracks it for deduction at tax time.</p>
             </div>
             <div class="card">
                 <div class="feature-icon">💡</div>
                 <h3>Strategy Finder</h3>
-                <p>25+ legal tax-saving strategies matched to your specific situation.</p>
+                <p>25+ legal tax-saving strategies with complexity ratings, risk levels, and potential savings. Filter by income type: W-2, freelancer, small business, real estate, and more.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">🎯</div>
+                <h3>Personalized Analyzer</h3>
+                <p>Answer a few questions (homeowner? kids? student loans?) and get strategies tailored to your exact situation — not generic advice.</p>
             </div>
             <div class="card">
                 <div class="feature-icon">🗺️</div>
-                <h3>State Tax Info</h3>
-                <p>All 50 states covered. Know your state's rates, brackets, and benefits.</p>
+                <h3>All 50 States</h3>
+                <p>State tax rates, brackets, and unique deductions for every state. Know if your state has income tax, sales tax exemptions, or special credits.</p>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, var(--dark-card), #1a1a2e);">
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">How It Works</h3>
+            <div class="grid grid-4">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">1️⃣</div>
+                    <strong style="color: #f8fafc;">Download</strong>
+                    <p style="font-size: 0.875rem;">Get TaxPrime on iOS or Android</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">2️⃣</div>
+                    <strong style="color: #f8fafc;">Tell Us About You</strong>
+                    <p style="font-size: 0.875rem;">Income type, life situation, goals</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">3️⃣</div>
+                    <strong style="color: #f8fafc;">Get Strategies</strong>
+                    <p style="font-size: 0.875rem;">AI finds deductions you're missing</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">4️⃣</div>
+                    <strong style="color: #f8fafc;">Save Money</strong>
+                    <p style="font-size: 0.875rem;">Keep more of what you earn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3b: Tax Strategies Included -->
+    <section class="slide" id="strategies">
+        <h2>Tax Strategies Included</h2>
+        <p class="subtitle">25+ legal strategies categorized by income type, complexity, and potential savings.</p>
+
+        <div class="grid grid-3" style="margin: 2rem 0;">
+            <div class="card">
+                <h3 style="color: var(--success);">For Self-Employed</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">QBI Deduction</strong> — 20% off qualified income</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Solo 401(k)</strong> — Up to $69,000/year</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">SEP-IRA</strong> — 25% of net self-employment</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Home Office</strong> — Simplified or actual method</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">S-Corp Election</strong> — Reduce SE tax</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Health Insurance</strong> — 100% deductible</li>
+                </ul>
             </div>
             <div class="card">
-                <div class="feature-icon">🔔</div>
-                <h3>Smart Alerts</h3>
-                <p>Never miss a deadline. Get notified about tax law changes that affect you.</p>
+                <h3 style="color: var(--primary);">For Investors</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Tax-Loss Harvesting</strong> — Offset gains with losses</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Long-Term Rates</strong> — 0%, 15%, or 20%</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Qualified Dividends</strong> — Lower tax rate</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">1031 Exchange</strong> — Defer real estate gains</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Backdoor Roth</strong> — High earner workaround</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Mega Backdoor Roth</strong> — Up to $69K/year</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--usa-gold);">For Everyone</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">HSA Triple Tax</strong> — Deduct, grow, withdraw tax-free</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Charity Bunching</strong> — Itemize every other year</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Student Loan Interest</strong> — Up to $2,500</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Mortgage Interest</strong> — Itemize if beneficial</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Child Tax Credit</strong> — Up to $2,000/child</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Dependent Care FSA</strong> — $5,000 pre-tax</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(37,99,235,0.1)); border: 2px solid var(--primary);">
+            <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                <div style="font-size: 2.5rem;">🎯</div>
+                <div style="flex: 1;">
+                    <h3 style="margin-bottom: 0.25rem;">Personalized Strategy Finder</h3>
+                    <p style="margin: 0;">Tell TaxPrime your income type, whether you have kids, own a home, have student loans, or are married — and it filters to show only the strategies that apply to <em>you</em>.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -546,30 +685,54 @@
     <!-- Slide 4: Demo -->
     <section class="slide" id="demo">
         <h2>The Product</h2>
-        <p class="subtitle">Built for iOS and Android. Production-ready.</p>
+        <p class="subtitle">Built for iOS and Android with React Native. Desktop app built with Tauri (Rust). Production-ready.</p>
 
+        <div class="grid grid-2" style="margin: 2rem 0;">
+            <div class="card">
+                <h3>📱 Mobile App (iOS & Android)</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">React Native + Expo for cross-platform</li>
+                    <li style="margin-bottom: 0.5rem;">In-app purchases via RevenueCat</li>
+                    <li style="margin-bottom: 0.5rem;">Push notifications for deadlines</li>
+                    <li style="margin-bottom: 0.5rem;">Biometric authentication</li>
+                    <li style="margin-bottom: 0.5rem;">Offline-capable with local storage</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🖥️ Desktop App (Windows, Mac, Linux)</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">Tauri 2.0 (Rust backend, React frontend)</li>
+                    <li style="margin-bottom: 0.5rem;">10x smaller than Electron apps</li>
+                    <li style="margin-bottom: 0.5rem;">Native performance, native security</li>
+                    <li style="margin-bottom: 0.5rem;">Local AI via Ollama integration</li>
+                    <li style="margin-bottom: 0.5rem;">All data stays on your device</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;">Click any image to expand</p>
         <div class="screenshot-grid">
             <div>
-                <img src="images/dashboard.png" alt="Dashboard" class="screenshot">
-                <p style="text-align: center; margin-top: 1rem;"><strong>Dashboard</strong> - Your tax summary at a glance</p>
+                <img src="images/dashboard.png" alt="Dashboard" class="screenshot" title="Click to expand">
+                <p style="text-align: center; margin-top: 1rem;"><strong>Dashboard</strong><br><span style="color: #94a3b8; font-size: 0.875rem;">Tax summary, deductions found, recent activity</span></p>
             </div>
             <div>
-                <img src="images/chat-response.png" alt="AI Chat Response" class="screenshot">
-                <p style="text-align: center; margin-top: 1rem;"><strong>AI Chat</strong> - Detailed, personalized advice</p>
+                <img src="images/chat-response.png" alt="AI Chat Response" class="screenshot" title="Click to expand">
+                <p style="text-align: center; margin-top: 1rem;"><strong>AI Tax Chat</strong><br><span style="color: #94a3b8; font-size: 0.875rem;">Ask anything, get detailed answers with IRS references</span></p>
             </div>
             <div>
-                <img src="images/state-taxes.png" alt="State Taxes" class="screenshot">
-                <p style="text-align: center; margin-top: 1rem;"><strong>State Taxes</strong> - All 50 states covered</p>
+                <img src="images/state-taxes.png" alt="State Taxes" class="screenshot" title="Click to expand">
+                <p style="text-align: center; margin-top: 1rem;"><strong>State Taxes</strong><br><span style="color: #94a3b8; font-size: 0.875rem;">Rates, brackets, and state-specific deductions</span></p>
             </div>
             <div>
-                <img src="images/settings.png" alt="Settings" class="screenshot">
-                <p style="text-align: center; margin-top: 1rem;"><strong>Settings</strong> - Customizable experience</p>
+                <img src="images/settings.png" alt="Settings" class="screenshot" title="Click to expand">
+                <p style="text-align: center; margin-top: 1rem;"><strong>Settings</strong><br><span style="color: #94a3b8; font-size: 0.875rem;">Dark/light mode, AI model selection, preferences</span></p>
             </div>
         </div>
 
         <div class="card" style="margin-top: 2rem;">
             <h3>🎥 Live Demo</h3>
-            <p style="margin-bottom: 1rem;">Watch a short walkthrough of TaxPrime.</p>
+            <p style="margin-bottom: 1rem;">Watch a walkthrough of TaxPrime — see the AI chat, strategy finder, and document vault in action.</p>
             <div class="video-wrapper">
                 <video controls preload="metadata" playsinline>
                     <source src="live-demo.mp4" type="video/mp4">
@@ -1093,14 +1256,20 @@
                 <h3>Website</h3>
                 <p style="color: var(--primary);">TaxPrime.app</p>
             </div>
-            <div class="card" style="text-align: center;">
+            <a href="#demo" class="card" style="text-align: center; text-decoration: none; cursor: pointer;">
                 <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
                 <h3>Demo</h3>
-                <p style="color: var(--primary);">TaxPrime.app Coming Soon</p>
-                <p style="color: #94a3b8; font-size: 0.875rem; margin-top: 0.5rem;">Aaron.Grace@Comcast.net</p>
-            </div>
+                <p style="color: var(--primary);">Watch the demo above ↑</p>
+            </a>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Expanded view" id="lightbox-img">
+        <p class="lightbox-hint">Click anywhere to close</p>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1149,6 +1318,33 @@
                     });
                 }
             });
+        });
+
+        // Lightbox functionality for screenshots
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const screenshots = document.querySelectorAll('.screenshot');
+
+        screenshots.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     </script>
 </body>
