@@ -1,0 +1,10 @@
+{
+  "name": "taxprime-pitch-deck",
+  "private": true,
+  "scripts": {
+    "pdf": "node html-to-pdf.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}

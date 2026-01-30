@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxPrime - Investor Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --usa-blue: #002868;
+            --usa-red: #bf0a30;
+            --usa-gold: #ffd700;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-border: #334155;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .slide:last-child {
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--usa-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--usa-gold);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--usa-blue), var(--primary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .slide {
+                padding: 40px 20px;
+            }
+        }
+
+        .card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        th {
+            background: var(--dark-card);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        tr:hover td {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .badge-primary {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary);
+        }
+
+        .cost-breakdown {
+            background: linear-gradient(135deg, var(--dark-card), #1a1a2e);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .cost-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--success);
+        }
+
+        .screenshot {
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            max-width: 100%;
+            border: 1px solid var(--dark-border);
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--usa-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--dark-card);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            border-radius: 4px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--dark-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--dark-card);
+        }
+
+        .stars {
+            color: var(--usa-gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <span>🇺🇸</span>
+            <span>TaxPrime</span>
+        </div>
+        <div class="nav-links">
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#demo">Demo</a>
+            <a href="#market">Market</a>
+            <a href="#costs">Costs</a>
+            <a href="#revenue">Revenue</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Slide 1: Cover -->
+    <section class="slide" style="padding-top: 100px;">
+        <div class="logo">
+            <div class="logo-icon">🇺🇸</div>
+            <div>
+                <h1>TaxPrime</h1>
+                <p class="tagline">⭐ For the People. By the People. ⭐</p>
+            </div>
+        </div>
+        <p class="subtitle">AI-Powered Tax Savings for Every American</p>
+        <p style="font-size: 1.25rem; max-width: 700px;">
+            Your personal AI tax assistant that finds legal ways to keep more of your hard-earned money. 
+            We help freelancers, small business owners, and everyday Americans discover deductions and credits they're missing.
+        </p>
+        <div style="margin-top: 2rem;">
+            <a href="#demo" class="cta-button">See the App →</a>
+        </div>
+    </section>
+
+    <!-- Slide 2: The Problem -->
+    <section class="slide" id="problem">
+        <h2>💸 The Problem</h2>
+        <p class="subtitle">Americans Overpay Billions in Taxes Every Year</p>
+        
+        <div class="grid grid-4" style="margin: 2rem 0;">
+            <div class="card stat-card">
+                <div class="stat-value">$1.1B+</div>
+                <div class="stat-label">Unclaimed Credits Annually</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value">73%</div>
+                <div class="stat-label">Use Standard Deduction</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value">60%</div>
+                <div class="stat-label">Self-Employed Miss Deductions</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value">70K+</div>
+                <div class="stat-label">Pages of Tax Code</div>
+            </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>😫 Current Pain Points</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">CPAs cost <strong style="color: #f8fafc;">$200-500/hour</strong></li>
+                    <li style="margin-bottom: 0.5rem;">Tax software is confusing and expensive</li>
+                    <li style="margin-bottom: 0.5rem;">Most people don't know what they can deduct</li>
+                    <li style="margin-bottom: 0.5rem;">Tax laws change every year</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>👥 Who Suffers Most?</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Freelancers & gig workers (27M+)</li>
+                    <li style="margin-bottom: 0.5rem;">Small business owners (33M)</li>
+                    <li style="margin-bottom: 0.5rem;">First-time homeowners</li>
+                    <li style="margin-bottom: 0.5rem;">Parents with young children</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Solution -->
+    <section class="slide" id="solution">
+        <h2>✨ The Solution</h2>
+        <p class="subtitle">TaxPrime: Your AI Tax Expert in Your Pocket</p>
+
+        <div class="grid grid-3" style="margin: 2rem 0;">
+            <div class="card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Tax Chat</h3>
+                <p>Get instant, accurate tax advice 24/7. Ask anything about deductions, credits, or strategies.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">📄</div>
+                <h3>Secure Documents</h3>
+                <p>Bank-level AES-256 encryption. Upload W2s, 1099s, and receipts safely.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">📸</div>
+                <h3>Receipt Scanner</h3>
+                <p>Snap a photo of receipts. We automatically categorize and track your expenses.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">💡</div>
+                <h3>Strategy Finder</h3>
+                <p>25+ legal tax-saving strategies matched to your specific situation.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">🗺️</div>
+                <h3>State Tax Info</h3>
+                <p>All 50 states covered. Know your state's rates, brackets, and benefits.</p>
+            </div>
+            <div class="card">
+                <div class="feature-icon">🔔</div>
+                <h3>Smart Alerts</h3>
+                <p>Never miss a deadline. Get notified about tax law changes that affect you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Demo -->
+    <section class="slide" id="demo">
+        <h2>📱 See It In Action</h2>
+        <p class="subtitle">A Beautiful, Modern Tax Assistant</p>
+
+        <div class="screenshot-grid">
+            <div>
+                <img src="images/dashboard.png" alt="Dashboard" class="screenshot">
+                <p style="text-align: center; margin-top: 1rem;"><strong>Dashboard</strong> - Your tax summary at a glance</p>
+            </div>
+            <div>
+                <img src="images/chat-response.png" alt="AI Chat Response" class="screenshot">
+                <p style="text-align: center; margin-top: 1rem;"><strong>AI Chat</strong> - Detailed, personalized advice</p>
+            </div>
+            <div>
+                <img src="images/state-taxes.png" alt="State Taxes" class="screenshot">
+                <p style="text-align: center; margin-top: 1rem;"><strong>State Taxes</strong> - All 50 states covered</p>
+            </div>
+            <div>
+                <img src="images/settings.png" alt="Settings" class="screenshot">
+                <p style="text-align: center; margin-top: 1rem;"><strong>Settings</strong> - Customizable experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Market -->
+    <section class="slide" id="market">
+        <h2>📊 Market Opportunity</h2>
+        <p class="subtitle">$15 Billion Tax Software Market</p>
+
+        <div class="grid grid-3" style="margin: 2rem 0;">
+            <div class="card stat-card">
+                <div class="stat-value">150M</div>
+                <div class="stat-label">US Tax Filers</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value">$14.9B</div>
+                <div class="stat-label">Market Size (2024)</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value">6.2%</div>
+                <div class="stat-label">Annual Growth</div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Target Segments</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Segment</th>
+                    <th>Size</th>
+                    <th>Opportunity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Self-Employed</td>
+                    <td>27 Million</td>
+                    <td><span class="badge badge-success">High-value deductions</span></td>
+                </tr>
+                <tr>
+                    <td>Gig Workers</td>
+                    <td>59 Million</td>
+                    <td><span class="badge badge-success">Often miss deductions</span></td>
+                </tr>
+                <tr>
+                    <td>Small Business</td>
+                    <td>33 Million</td>
+                    <td><span class="badge badge-warning">Complex tax situations</span></td>
+                </tr>
+                <tr>
+                    <td>Homeowners</td>
+                    <td>65 Million</td>
+                    <td><span class="badge badge-primary">Itemization opportunities</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Slide 6: Costs -->
+    <section class="slide" id="costs">
+        <h2>💰 Infrastructure Costs</h2>
+        <p class="subtitle">Lean, Scalable, Pay-Per-Use Architecture</p>
+
+        <div class="cost-breakdown">
+            <h3 style="margin-bottom: 1.5rem;">Monthly Cost by Scale</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scale</th>
+                        <th>Users</th>
+                        <th>AWS</th>
+                        <th>AI (OpenAI)</th>
+                        <th>Other</th>
+                        <th>Total/Month</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-primary">Launch</span></td>
+                        <td>100</td>
+                        <td>$25</td>
+                        <td>$50</td>
+                        <td>$0</td>
+                        <td><strong style="color: var(--success);">$75</strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-primary">Growth</span></td>
+                        <td>1,000</td>
+                        <td>$150</td>
+                        <td>$500</td>
+                        <td>$99</td>
+                        <td><strong style="color: var(--success);">$749</strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-warning">Scale</span></td>
+                        <td>10,000</td>
+                        <td>$800</td>
+                        <td>$3,000</td>
+                        <td>$299</td>
+                        <td><strong style="color: var(--warning);">$4,099</strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-success">Enterprise</span></td>
+                        <td>100,000</td>
+                        <td>$5,000</td>
+                        <td>$25,000</td>
+                        <td>$999</td>
+                        <td><strong>$30,999</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>📦 One-Time Costs</h3>
+                <div class="cost-row">
+                    <span>Apple Developer Account</span>
+                    <span>$99/year</span>
+                </div>
+                <div class="cost-row">
+                    <span>Google Play Developer</span>
+                    <span>$25 (one-time)</span>
+                </div>
+                <div class="cost-row">
+                    <span>Domain + SSL</span>
+                    <span>$12/year</span>
+                </div>
+                <div class="cost-row">
+                    <span><strong>Total First Year</strong></span>
+                    <span><strong>$136</strong></span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>⚡ Why So Affordable?</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Serverless Architecture</strong> - Pay only for what you use</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">AWS Lambda</strong> - No servers to maintain</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Smart AI Routing</strong> - Use cheaper models for simple queries</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Free Tiers</strong> - Many services are free at launch scale</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Business Model -->
+    <section class="slide" id="revenue">
+        <h2>💵 Business Model</h2>
+        <p class="subtitle">Freemium with Premium Subscriptions</p>
+
+        <div class="grid grid-2" style="margin: 2rem 0;">
+            <div class="card" style="border: 2px solid var(--dark-border);">
+                <h3>Free Tier</h3>
+                <div style="font-size: 2rem; font-weight: 800; color: #94a3b8; margin: 1rem 0;">$0</div>
+                <ul style="color: #94a3b8; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">10 AI chat questions/month</li>
+                    <li style="margin-bottom: 0.5rem;">Dashboard overview</li>
+                    <li style="margin-bottom: 0.5rem;">Tax strategy browser</li>
+                    <li style="margin-bottom: 0.5rem;">Tax deadline reminders</li>
+                </ul>
+            </div>
+            <div class="card" style="border: 2px solid var(--primary); background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(37,99,235,0.1));">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Premium</h3>
+                    <span class="badge badge-success">Recommended</span>
+                </div>
+                <div style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 1rem 0;">$9.99<span style="font-size: 1rem; color: #94a3b8;">/month</span></div>
+                <p style="color: var(--success); font-size: 0.875rem;">or $79.99/year (save 33%)</p>
+                <ul style="color: #cbd5e1; padding-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Unlimited</strong> AI chat</li>
+                    <li style="margin-bottom: 0.5rem;">Document storage (encrypted)</li>
+                    <li style="margin-bottom: 0.5rem;">Receipt scanner with OCR</li>
+                    <li style="margin-bottom: 0.5rem;">Personalized strategy analyzer</li>
+                    <li style="margin-bottom: 0.5rem;">Cloud sync across devices</li>
+                    <li style="margin-bottom: 0.5rem;">Priority support</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Revenue Projections</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Total Users</th>
+                    <th>Premium (20%)</th>
+                    <th>Monthly Revenue</th>
+                    <th>Annual Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Year 1</td>
+                    <td>10,000</td>
+                    <td>2,000</td>
+                    <td>$19,980</td>
+                    <td><strong style="color: var(--success);">$239,760</strong></td>
+                </tr>
+                <tr>
+                    <td>Year 2</td>
+                    <td>50,000</td>
+                    <td>10,000</td>
+                    <td>$99,900</td>
+                    <td><strong style="color: var(--success);">$1,198,800</strong></td>
+                </tr>
+                <tr>
+                    <td>Year 3</td>
+                    <td>200,000</td>
+                    <td>40,000</td>
+                    <td>$399,600</td>
+                    <td><strong style="color: var(--success);">$4,795,200</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, var(--success), #15803d); border: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="color: white;">Break-Even Point</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin: 0;">~4,200 total users (840 premium subscribers)</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; font-weight: 800; color: white;">~$8,400 MRR</div>
+                    <p style="color: rgba(255,255,255,0.8); margin: 0;">Achievable in 6-12 months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Competitive Advantage -->
+    <section class="slide">
+        <h2>🏆 Why TaxPrime Wins</h2>
+        <p class="subtitle">We're Different From TurboTax & H&R Block</p>
+
+        <table style="margin: 2rem 0;">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>TaxPrime</th>
+                    <th>TurboTax</th>
+                    <th>H&R Block</th>
+                    <th>ChatGPT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AI Tax Chat</td>
+                    <td><span class="badge badge-success">✓ 24/7</span></td>
+                    <td>❌ Paid add-on</td>
+                    <td>❌ Humans only</td>
+                    <td>⚠️ Generic</td>
+                </tr>
+                <tr>
+                    <td>Year-Round Use</td>
+                    <td><span class="badge badge-success">✓</span></td>
+                    <td>❌ Seasonal</td>
+                    <td>❌ Seasonal</td>
+                    <td><span class="badge badge-success">✓</span></td>
+                </tr>
+                <tr>
+                    <td>Receipt Scanner</td>
+                    <td><span class="badge badge-success">✓</span></td>
+                    <td>⚠️ Limited</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Privacy-First</td>
+                    <td><span class="badge badge-success">✓ E2E Encrypted</span></td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><strong style="color: var(--success);">$9.99/mo</strong></td>
+                    <td>$89-219</td>
+                    <td>$85-195</td>
+                    <td>$20/mo</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="grid grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>🎯 Our Advantages</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">AI-First</strong> - Built for conversation, not forms</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Year-Round</strong> - Help all year, not just tax season</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Privacy-Focused</strong> - Your data stays yours</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">10x Cheaper</strong> - Than TurboTax Live</li>
+                    <li style="margin-bottom: 0.5rem;"><strong style="color: #f8fafc;">Modern UX</strong> - Mobile-first, beautiful design</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🚀 Why Now?</h3>
+                <ul style="color: #94a3b8; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">AI technology finally good enough</li>
+                    <li style="margin-bottom: 0.5rem;">Remote work = more complex taxes</li>
+                    <li style="margin-bottom: 0.5rem;">Gig economy growing 3x faster</li>
+                    <li style="margin-bottom: 0.5rem;">Post-pandemic financial awareness</li>
+                    <li style="margin-bottom: 0.5rem;">Mobile-first generation of taxpayers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Roadmap -->
+    <section class="slide">
+        <h2>🗓️ Roadmap</h2>
+        <p class="subtitle">From MVP to Market Leader</p>
+
+        <div class="grid grid-2" style="margin-top: 2rem;">
+            <div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Q1 2026 - Launch</h3>
+                        <p>iOS & Android app launch, initial marketing push</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Q2 2026 - Growth</h3>
+                        <p>10,000 users, partnership outreach, feature refinement</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Q3-Q4 2026 - Scale</h3>
+                        <p>50,000 users, enterprise features, CPA partnerships</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2027 - Expansion</h3>
+                        <p>Tax filing integration, small business features, international</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <h3>📈 Key Milestones</h3>
+                    
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Month 3: App Store Launch</span>
+                            <span class="badge badge-success">Done</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Month 6: 10K Users</span>
+                            <span>0 / 10,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Month 12: Break-Even</span>
+                            <span>$0 / $8,400 MRR</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Month 18: 50K Users</span>
+                            <span>0 / 50,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: The Ask -->
+    <section class="slide" id="contact">
+        <h2>🤝 The Opportunity</h2>
+        <p class="subtitle">Join Us in Democratizing Tax Expertise</p>
+
+        <div class="card" style="background: linear-gradient(135deg, var(--usa-blue), var(--primary)); border: none; margin: 2rem 0; padding: 3rem;">
+            <div style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 1rem;">Ready to Help Americans Save</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem;">
+                    TaxPrime is built and ready to launch. We're looking for partners who believe in making tax expertise accessible to everyone.
+                </p>
+                <div class="stars" style="font-size: 2rem; margin-bottom: 1rem;">⭐⭐⭐</div>
+                <p style="color: var(--usa-gold); font-size: 1.5rem; font-weight: 600;">
+                    "For the People. By the People."
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-3">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
+                <h3>Email</h3>
+                <p style="color: var(--primary);">investors@taxprime.app</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">🌐</div>
+                <h3>Website</h3>
+                <p style="color: var(--primary);">taxprime.app</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                <h3>Demo</h3>
+                <p style="color: var(--primary);">Available Now</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+            <div class="logo-icon" style="width: 48px; height: 48px; font-size: 1.5rem;">🇺🇸</div>
+            <span style="font-size: 1.5rem; font-weight: 700;">TaxPrime</span>
+        </div>
+        <p style="color: #94a3b8;">Keep More of What You Earn</p>
+        <p style="color: #64748b; font-size: 0.875rem; margin-top: 2rem;">
+            © 2026 TaxPrime. All rights reserved.<br>
+            TaxPrime provides educational information only. Always consult a licensed CPA for specific tax advice.
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll-based nav highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.scrollY;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.style.color = '#94a3b8';
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.style.color = '#3b82f6';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
